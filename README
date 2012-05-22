@@ -1,0 +1,27 @@
+Spring Social project to connect with the Eventbrite API. For more info see:
+
+http://www.springsource.org/spring-social
+http://developer.eventbrite.com/
+
+Supports accessing API calls requiring no authentication, or requiring just an API key, as well as calls requiring OAuth.
+
+Now also supports posting binary files.
+
+To add this project as a dependency using Maven, add the following XML snippets to your pom.xml file:
+
+...
+  <dependencies>
+    <dependency>
+      <groupId>org.org.springframework.social</groupId>
+      <artifactId>spring-social-eventbrite</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+...
+  <repositories>
+    <repository>
+        <id>agentgt-snapshots</id>
+        <url>https://raw.github.com/agentgt/agentgt-maven-repo/master/snapshots</url>
+    </repository>
+  </repositories>
+...
