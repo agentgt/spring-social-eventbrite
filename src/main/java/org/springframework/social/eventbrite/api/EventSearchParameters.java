@@ -1,7 +1,6 @@
 package org.springframework.social.eventbrite.api;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -132,7 +131,7 @@ import java.util.List;
  * 
  */
 public class EventSearchParameters {
-	
+
 	private List<String> keywords = new ArrayList<String>();
 	private List<String> categories = new ArrayList<String>();
 	private String address;
@@ -140,53 +139,49 @@ public class EventSearchParameters {
 	private String region;
 	private String postalCode;
 	private String country;
-	private boolean withIn = false;
+	private Boolean withIn;
 	private WithInUnit withInUnit = WithInUnit.MILES;
 	private Double latitude;
 	private Double longitude;
-	private Date date;
-	private Date dateCreated;
-	private Date dateModified;
+	private String date;
+	private String dateCreated;
+	private String dateModified;
 	private String organizer;
 	private Integer max;
 	private Boolean countOnly;
 	private SortBy sortBy;
 	private Integer page;
 	private String trackingLink;
-	
-	
-	public static enum SortBy {
-		
-		ID("id"), 
-		DATE("date"), 
-		NAME("name"), 
-		CITY("city");
-		
-		private String parameter;
-		private SortBy(String parameter) {
-			this.parameter = parameter;
+
+	public static enum SortBy implements ParameterEnum {
+
+		ID("id"), DATE("date"), NAME("name"), CITY("city");
+
+		private String parameterName;
+
+		private SortBy(String parameterName) {
+			this.parameterName = parameterName;
 		}
-		public String getParameter() {
-			return parameter;
+		public String getParameterName() {
+			return parameterName;
 		}
-	}
-	
-	public static enum WithInUnit {
-		
-		MILES("M"),
-		KILOMETERS("K");
-		
-		private String parameter;
-		private WithInUnit(String parameter) {
-			this.parameter = parameter;
-		}
-		public String getParameter() {
-			return parameter;
-		}
-	
 	}
 
-	
+	public static enum WithInUnit implements ParameterEnum {
+
+		MILES("M"), KILOMETERS("K");
+
+		private String parameterName;
+
+		private WithInUnit(String parameterName) {
+			this.parameterName = parameterName;
+		}
+		public String getParameterName() {
+			return parameterName;
+		}
+
+	}
+
 	public List<String> getKeywords() {
 		return keywords;
 	}
@@ -243,7 +238,7 @@ public class EventSearchParameters {
 		this.country = country;
 	}
 
-	public boolean isWithIn() {
+	public Boolean getWithIn() {
 		return withIn;
 	}
 
@@ -275,28 +270,32 @@ public class EventSearchParameters {
 		this.longitude = longitude;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
-	public Date getDateCreated() {
+	public String getDateCreated() {
 		return dateCreated;
 	}
 
-	public void setDateCreated(Date dateCreated) {
+	public void setDateCreated(String dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
-	public Date getDateModified() {
+	public String getDateModified() {
 		return dateModified;
 	}
 
-	public void setDateModified(Date dateModified) {
+	public void setDateModified(String dateModified) {
 		this.dateModified = dateModified;
+	}
+
+	public void setWithIn(Boolean withIn) {
+		this.withIn = withIn;
 	}
 
 	public String getOrganizer() {
@@ -346,5 +345,5 @@ public class EventSearchParameters {
 	public void setTrackingLink(String trackingLink) {
 		this.trackingLink = trackingLink;
 	}
-	
+
 }

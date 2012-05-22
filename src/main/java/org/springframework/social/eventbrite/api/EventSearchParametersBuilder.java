@@ -8,7 +8,6 @@
 package org.springframework.social.eventbrite.api;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.springframework.social.eventbrite.api.EventSearchParameters.SortBy;
 import org.springframework.social.eventbrite.api.EventSearchParameters.WithInUnit;
@@ -140,22 +139,29 @@ class EventSearchParametersBuilderBase<GeneratorT extends EventSearchParametersB
 	}
 
 	@SuppressWarnings("unchecked")
-	public GeneratorT date(Date aValue) {
+	public GeneratorT date(String aValue) {
 		instance.setDate(aValue);
 
 		return (GeneratorT) this;
 	}
 
 	@SuppressWarnings("unchecked")
-	public GeneratorT dateCreated(Date aValue) {
+	public GeneratorT dateCreated(String aValue) {
 		instance.setDateCreated(aValue);
 
 		return (GeneratorT) this;
 	}
 
 	@SuppressWarnings("unchecked")
-	public GeneratorT dateModified(Date aValue) {
+	public GeneratorT dateModified(String aValue) {
 		instance.setDateModified(aValue);
+
+		return (GeneratorT) this;
+	}
+
+	@SuppressWarnings("unchecked")
+	public GeneratorT withIn(Boolean aValue) {
+		instance.setWithIn(aValue);
 
 		return (GeneratorT) this;
 	}

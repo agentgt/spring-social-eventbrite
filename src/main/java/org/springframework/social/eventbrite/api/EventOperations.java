@@ -11,6 +11,7 @@ event_copy
 event_update
 	 */
 	
+	public EventSearchResults search(EventSearchParameters parameters);
 	
 
 }
