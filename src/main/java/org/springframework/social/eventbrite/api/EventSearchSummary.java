@@ -1,19 +1,25 @@
 package org.springframework.social.eventbrite.api;
 
-import java.util.Map;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class EventSearchSummary {
 
-	private Map<String, Object> filters;
+	private Filters filters;
+	@XmlElement(name="first_event")
 	private String firstEvent;
+	@XmlElement(name="last_event")
 	private String lastEvent;
+	@XmlElement(name="total_items")
 	private Integer totalItems;
 
-	public Map<String, Object> getFilters() {
+
+	public Filters getFilters() {
 		return filters;
 	}
-
-	public void setFilters(Map<String, Object> filters) {
+	public void setFilters(Filters filters) {
 		this.filters = filters;
 	}
 

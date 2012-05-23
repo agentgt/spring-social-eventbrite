@@ -1,5 +1,9 @@
 package org.springframework.social.eventbrite.api;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+
 //<venue>
 //<id>1</id>
 //<name>Madison Square Garden</name>
@@ -12,17 +16,25 @@ package org.springframework.social.eventbrite.api;
 //<country_code>US</country_code>
 //<Lat-Long>47.123 / 3.34</Lat-Long>
 //</venue>
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Venue {
 
 	private String id;
 	private String name;
 	private String address;
+	@XmlElement(name="address_2")
 	private String address2;
 	private String city;
 	private String region;
+	@XmlElement(name="postal_code")
 	private String postalCode;
 	private String country;
+	@XmlElement(name="country_code")
 	private String countryCode;
+	
+	//TODO Handle this better.
+	@XmlElement(name="Lat-Long")
+	private String latitudeLongitude;
 
 	public String getId() {
 		return id;
@@ -95,5 +107,12 @@ public class Venue {
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
 	}
-
+	
+	public String getLatitudeLongitude() {
+		return latitudeLongitude;
+	}
+	
+	public void setLatitudeLongitude(String latitudeLongitude) {
+		this.latitudeLongitude = latitudeLongitude;
+	}
 }

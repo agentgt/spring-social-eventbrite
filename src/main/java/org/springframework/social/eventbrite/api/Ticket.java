@@ -3,6 +3,11 @@ package org.springframework.social.eventbrite.api;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 //<ticket>
 //<id>45264859</id>
 //<name>VIP Registration</name>
@@ -15,6 +20,7 @@ import java.util.Date;
 //<quantity_available>100</quantity_available>
 //<quantity_sold>0</quantity_sold>
 //</ticket>
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Ticket {
 
 	private String id;
@@ -23,10 +29,17 @@ public class Ticket {
 	private String type;
 	private String currency;
 	private BigDecimal price;
+	@XmlJavaTypeAdapter(EventbriteXmlDateAdapter.class)
+	@XmlElement(name="start_date")
 	private Date startDate;
+	@XmlJavaTypeAdapter(EventbriteXmlDateAdapter.class)
+	@XmlElement(name="end_date")
 	private Date endDate;
-	private Integer quantity;
+	@XmlElement(name="quantity_available")
+	private Integer quantityAvailable;
+	@XmlElement(name="quantity_sold")
 	private Integer quantitySold;
+	
 
 	public String getId() {
 		return id;
@@ -92,12 +105,11 @@ public class Ticket {
 		this.endDate = endDate;
 	}
 
-	public Integer getQuantity() {
-		return quantity;
+	public Integer getQuantityAvailable() {
+		return quantityAvailable;
 	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
+	public void setQuantityAvailable(Integer quantityAvailable) {
+		this.quantityAvailable = quantityAvailable;
 	}
 
 	public Integer getQuantitySold() {

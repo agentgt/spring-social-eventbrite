@@ -3,6 +3,12 @@ package org.springframework.social.eventbrite.api;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 //<event>
 //<id>908163459</id>
 //<title>Best NYC New Year's Party</title>
@@ -51,6 +57,7 @@ import java.util.List;
 //	</ticket>
 //</tickets>
 //</event>
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Event {
 	
 	private String id;
@@ -58,17 +65,33 @@ public class Event {
 	private String description;
 	private String category;
 	private String tags;
+	
+	@XmlJavaTypeAdapter(EventbriteXmlDateAdapter.class)
+	@XmlElement(name="start_date")
 	private Date startDate;
+	
+	@XmlJavaTypeAdapter(EventbriteXmlDateAdapter.class)
+	@XmlElement(name="end_date")
 	private Date endDate;
+	
+	@XmlElement(name="timezone")
 	private String timeZone;
+	
+	@XmlJavaTypeAdapter(EventbriteXmlDateAdapter.class)
 	private Date created;
+	
+	@XmlJavaTypeAdapter(EventbriteXmlDateAdapter.class)
 	private Date modified;
+	
 	private String privacy;
 	private String url;
 	private String logo;
+	@XmlElement(name="logo_ssl")
 	private String logoSSL;
-	private List<Venue> venues;
+	private Venue venue;
 	private Organizer organizer;
+	@XmlElementWrapper(name="tickets")
+	@XmlElement(name="ticket")
 	private List<Ticket> tickets;
 	
 	public String getId() {
@@ -183,12 +206,12 @@ public class Event {
 		this.logoSSL = logoSSL;
 	}
 
-	public List<Venue> getVenues() {
-		return venues;
+	public Venue getVenue() {
+		return venue;
 	}
 
-	public void setVenues(List<Venue> venues) {
-		this.venues = venues;
+	public void setVenue(Venue venue) {
+		this.venue = venue;
 	}
 
 	public Organizer getOrganizer() {

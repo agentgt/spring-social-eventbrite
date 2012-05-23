@@ -1,11 +1,15 @@
 package org.springframework.social.eventbrite.api;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+
 //<organizer>
 //<id>65739440</id>
 //<name>New Year's NYC Team</name>
 //<description>We organizer the best parties in town!</description>
 //<url>http://www.eventbrite.com/org/65739440</url>
 //</organizer>
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Organizer {
 
 	private String id;
