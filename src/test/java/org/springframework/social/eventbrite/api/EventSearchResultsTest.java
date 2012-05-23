@@ -1,21 +1,13 @@
 package org.springframework.social.eventbrite.api;
 
-import static org.junit.Assert.*;
-import static org.custommonkey.xmlunit.XMLAssert.*;
-
+import static org.custommonkey.xmlunit.XMLAssert.assertXMLEqual;
 
 import java.io.StringWriter;
 
 import javax.xml.bind.JAXB;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.ValidationEvent;
-import javax.xml.bind.ValidationEventHandler;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
-import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Before;
 import org.junit.Test;
